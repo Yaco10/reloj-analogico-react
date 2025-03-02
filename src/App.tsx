@@ -21,7 +21,7 @@ function App() {
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
-  const hourDeg = (hours / 12) * 360;
+  const hourDeg = ((hours % 12) / 12) * 360 + (minutes / 60) * 30;
   const minuteDeg = (minutes / 60) * 360;
   const secondDeg = (seconds / 60) * 360;
 
@@ -37,11 +37,11 @@ function App() {
                 style={{ transform: `rotate(${hourDeg}deg)` }}
               ></div>
               <div
-                className="w-[2px] h-23 bg-white transform -translate-y-[50%] absolute transform origin-bottom rotate-[120deg] rounded-[10px]"
+                className="w-[2px] h-23 bg-white transform -translate-y-[50%] absolute transform origin-bottom rounded-[10px]"
                 style={{ transform: `rotate(${minuteDeg}deg)` }}
               ></div>
               <div
-                className="w-[1px] h-23 bg-white transform -translate-y-[50%] absolute transform origin-bottom rotate-[300deg] rounded-[10px]"
+                className="w-[1px] h-23 bg-gray-400 transform -translate-y-[50%] absolute transform origin-bottom rounded-[10px]"
                 style={{ transform: `rotate(${secondDeg}deg)` }}
               ></div>
               {Array.from({ length: HOURS }, (_, i) => (
